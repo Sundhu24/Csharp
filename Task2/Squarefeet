@@ -1,0 +1,22 @@
+using System;
+class program
+{
+    public static void Main()
+    {
+        int length;
+        int width;
+        int area;
+
+        Console.WriteLine("Enter the length: ");
+        length = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Enter the width: ");
+        width = Convert.ToInt32(Console.ReadLine());
+
+        area = length * width;
+        Console.WriteLine("Square feet of house is :"+area);
+        Console.ReadLine(); 
+
+
+
+    }
+}
