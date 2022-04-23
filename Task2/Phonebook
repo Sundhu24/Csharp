@@ -1,0 +1,66 @@
+using System;
+using System.IO;
+using System.Text;
+using System.Collections;
+
+class Test
+{
+    public static void Main()
+    {
+        string path = @"D:\C-Sharp\MyTest.txt";
+        string createText;
+        Hashtable h1 = new Hashtable();
+
+        
+        h1.Add("A1", "123456");
+        h1.Add("A2", "234567");
+        h1.Add("A3", "345678");
+
+
+        Console.WriteLine("PhoneBook");
+        foreach (DictionaryEntry e1 in h1)
+        {
+            Console.WriteLine("{0} and {1} ", e1.Key, e1.Value);
+            createText = e1.Key + " " + e1.Value +"\n";
+            File.AppendAllText(path, createText);
+
+        }
+
+        List<string> readLines = File.ReadAllLines(path).ToList();
+        /* Assuming data in the test.txt is like in the below format and  delimited by ,
+           key1,val1
+           key2,val2
+        */
+        System.Collections.Hashtable objTable = new System.Collections.Hashtable();
+        foreach (string line in readLines)
+        {
+            string key = line.Split(' ')[0];
+            string val = line.Split(' ')[1];
+            
+            if (!objTable.ContainsKey(key))
+            {
+                objTable.Add(key, val);
+            }
+          
+        }
+        /*foreach (DictionaryEntry e1 in objTable)
+        {
+            Console.WriteLine(" The key is "+ e1.Key+" Value is :"+ e1.Value);
+        }*/
+
+      
+    
+
+    Console.WriteLine("Enter Number to search Phonebook");
+    string str = Console.ReadLine();
+    if(objTable.ContainsValue(str))
+    {
+        Console.WriteLine("There is a match");
+    }
+    else
+    {
+        Console.WriteLine("Match not found");
+    }
+    Console.ReadLine();
+    }
+}
