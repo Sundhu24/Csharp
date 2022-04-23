@@ -1,0 +1,209 @@
+using System;
+
+namespace TicTacToe
+{
+    class Program
+    {
+        static string[] choices = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; 
+        static bool Playing = true;
+        static int turn = 0;
+
+        static void Main(string[] args)
+        {
+            
+            Board();
+
+            while (Playing) 
+            {
+                if (turn % 2 == 0)
+                {
+                    Console.WriteLine("Player 1's turn");
+                }
+                else
+                {
+                    Console.WriteLine("Player 2's turn");
+                }
+
+                int playerInput1;
+                Console.WriteLine("Type in your option");
+                bool torf = int.TryParse(Console.ReadLine(), out playerInput1);
+                playerInput1--;
+                
+
+                if (torf && playerInput1 < 9 && playerInput1 > -1) 
+                {
+                    if (choices[playerInput1] == "x" || choices[playerInput1] == "o")
+                    {
+                        Console.WriteLine("Option already Selected");
+                    }
+                    else
+                    {
+                        if (turn % 2 == 0)
+                        {
+                            choices[playerInput1] = "x";
+                            turn++;
+
+                            Board();
+                            WinCondition();
+                            Tie();
+                        }
+                        else
+                        {
+                            choices[playerInput1] = "o";
+                            turn++;
+
+                            Board();
+                            WinCondition();
+                            Tie();
+                        }
+                       
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Please input a valid expression");
+                }
+               
+            }
+            Console.ReadLine();
+        }
+        public static void Board() // makes the board
+        {
+            Console.Clear();
+
+            Console.WriteLine("     |     |      ");
+
+            Console.WriteLine($"  {choices[0]}  |  {choices[1]}  |  {choices[2]}");
+
+            Console.WriteLine("_____|_____|_____ ");
+
+            Console.WriteLine("     |     |      ");
+
+            Console.WriteLine($"  {choices[3]}  |  {choices[4]}  |  {choices[5]}");
+
+            Console.WriteLine("_____|_____|_____ ");
+
+            Console.WriteLine("     |     |      ");
+
+            Console.WriteLine($"  {choices[6]}  |  {choices[7]}  |  {choices[8]}");
+
+            Console.WriteLine("     |     |      ");
+        }
+
+        public static void WinCondition()
+        {
+            if (choices[0] == choices[1] && choices[1] == choices[2])
+            {
+                Playing = false;
+                if (turn % 2 == 0)
+                {
+                    Console.WriteLine("Congrats Player2");
+                }
+                else
+                {
+                    Console.WriteLine("Congrats Player1");
+                }
+            }
+            else if (choices[3] == choices[4] && choices[4] == choices[5])
+            {
+                Playing = false;
+                if (turn % 2 == 0)
+                {
+                    Console.WriteLine("Congrats Player2");
+                }
+                else
+                {
+                    Console.WriteLine("Congrats Player1");
+                }
+            }
+            else if (choices[6] == choices[7] && choices[7] == choices[8])
+            {
+                Playing = false;
+                if (turn % 2 == 0)
+                {
+                    Console.WriteLine("Congrats Player2");
+                }
+                else
+                {
+                    Console.WriteLine("Congrats Player1");
+                }
+            }
+            // checks for vertical wins
+            else if (choices[0] == choices[3] && choices[3] == choices[6])
+            {
+                Playing = false;
+                if (turn % 2 == 0)
+                {
+                    Console.WriteLine("Congrats Player2");
+                }
+                else
+                {
+                    Console.WriteLine("Congrats Player1");
+                }
+            }
+            else if (choices[1] == choices[4] && choices[4] == choices[7])
+            {
+                Playing = false;
+                if (turn % 2 == 0)
+                {
+                    Console.WriteLine("Congrats Player2");
+                }
+                else
+                {
+                    Console.WriteLine("Congrats Player1");
+                }
+            }
+            else if (choices[2] == choices[5] && choices[5] == choices[8])
+            {
+                Playing = false;
+                if (turn % 2 == 0)
+                {
+                    Console.WriteLine("Congrats Player2");
+                }
+                else
+                {
+                    Console.WriteLine("Congrats Player1");
+                }
+            }
+            // checks for diagonal wins
+            else if (choices[0] == choices[4] && choices[4] == choices[8])
+            {
+                Playing = false;
+                if (turn % 2 == 0)
+                {
+                    Console.WriteLine("Congrats Player2");
+                }
+                else
+                {
+                    Console.WriteLine("Congrats Player1");
+                }
+            }
+            else if (choices[2] == choices[4] && choices[4] == choices[6])
+            {
+                Playing = false;
+                if (turn % 2 == 0)
+                {
+                    Console.WriteLine("Congrats Player2");
+                }
+                else
+                {
+                    Console.WriteLine("Congrats Player1");
+                }
+            }
+           
+        }
+
+       
+
+        public static void Tie()
+        {
+            if (choices[0] != "1" && choices[1] != "2" && choices[2] != "3" && choices[3] != "4" && choices[4] != "5" && choices[5] != "6" && choices[6] != "7" && choices[7] != "8" && choices[8] != "9")
+            {
+                Console.WriteLine("The game is a tie");
+                Playing = false;
+                
+            }
+           
+        }
+    }
+}
