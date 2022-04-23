@@ -44,7 +44,7 @@ class program
             if (chk == 1)
                 break;
         }
-        Console.WriteLine("\n\n THANKS FOR USING BANK ATM SERVICE");
+        Console.WriteLine("\n\n THANKS");
         Console.ReadLine();
        
     }
