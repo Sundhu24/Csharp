@@ -1,0 +1,51 @@
+ -- Project Management - Web Application (Tool)
+
+ DB : ProjectManagmentDB
+ 
+
+ /*
+  Company : ABC Corp
+  Project Managers : 5
+  Developers : 20
+  Designers : 5
+  Office : 5
+
+  Clients : 10
+  Projects : 15
+
+
+  Tasks
+
+  -- Admin User ( Manage Other users, Create a project ..)
+  -- Developer, Designer, ... ( Employee )
+
+   -- Client Regsiter
+   -- Post a Project ( title, desc ... )
+   -- Admin - Assign the Project to a Project Manage
+   -- Project Manager will assign the task to developers
+		-- Task (Open, Going On, Completed)
+		-- Developer will update the status
+	-- Project ( Open, On going, Testing, Complete)
+
+	-- User Role ( Developer, Project Manager, Designer ...)
+
+	User - ( Client, All employee )
+	Project -- ( Tasks, Activities ..)
+
+ */
+
+ -- Developer, Designer, Client, Admin, Office, Project Manager
+
+ -- user_role (id, user_role) 
+	-- 1, Admin
+	-- 2, Client
+	-- 3, Project Manager
+
+ -- user table ( id, username, password, user_role_id)
+	-- 1, username1, password1, 1
+	-- 2, client1, pass2, 2
+	-- 1, username1, password1, 1
+
+ -- user details (id, user_id, email, phonenumber, address)
+ -- project (id, project_name, project_desc, client_id, created_date, project_manager_id, status)
+ -- task (id, project_id, task_title, status, assigned_to (user_id), assigned_by (project_manager_id), created_date, updated_date, updated_by)
