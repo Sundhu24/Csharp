@@ -56,3 +56,35 @@ select city.cityname, country.cname from city join country on city.country_id = 
 select city.cityname, country.cname from city left join country on city.country_id = country.id
 
 select * from city
+
+select city.cityname, country.cname from city right join country on city.country_id = country.id
+
+-- Aggregation functions
+
+select count(*) from city;
+
+
+
+select count(distinct rating) from city;
+
+select * from city
+
+
+
+select country_id , sum(population) as sumval from city group by country_id
+
+
+select * from country
+select min(popuation), Max(popuation) from country
+
+
+-- All the records which has the same rating like chennai
+-- Sub Queries
+select * from city
+select cityname from city where rating = (select rating from city where cityname='Chennai');
+
+
+-- 260000
+select * from country
+select * from city
+select cityname from city where country_id in (select id from country where popuation > 260000)
