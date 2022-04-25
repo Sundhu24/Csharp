@@ -1,0 +1,58 @@
+create table country(
+id int IDENTITY(1,1) PRIMARY KEY,
+name varchar(50) NOT NULL,
+popuation int,
+area int)
+
+create table city(
+id int IDENTITY(1,1) PRIMARY KEY,
+cityname varchar(50) NOT NULL,
+country_id int,
+popuation int,
+rating int)
+
+insert into city(cityname, country_id, population, rating) values ('Paris', 1, 20000, 2)
+insert into city(cityname, country_id, population, rating) values ('Mumbai', 3, 40000, 3)
+insert into city(cityname, country_id, population, rating) values ('Delhi', 3, 30000, 4)
+insert into city(cityname, country_id, population, rating) values ('Chennai', 3, 50000, 4)
+
+insert into city(cityname, country_id, population) values ('Pune', 3, 50000)
+
+insert into city(cityname, population) values ('Sale,', 50000)
+
+
+insert into country(cname, popuation,area) values ('France', 250000, 10000)
+insert into country(cname, popuation,area) values ('Singapore', 350000, 20000)
+insert into country(cname, popuation,area) values ('India', 450000, 30000)
+insert into country(cname, popuation,area) values ('China', 550000, 40000)
+
+
+select id,cname from country
+
+select cname, popuation from country order by popuation desc
+
+select cname, popuation from country where popuation > 300000
+
+select cityname from city where cityname != 'Mumbai' AND cityname != 'Delhi'
+
+select cityname from city where cityname like '%M'
+
+select cityname from city where population between 20000 and 30000
+
+select cityname, rating from city where rating IN (2,4)
+
+select cityname, rating from city where rating is not null
+
+
+select * from country
+
+select * from city
+
+-- Inner Join (Join)
+select * from city join country on city.country_id = country.id
+
+select city.cityname, country.cname from city join country on city.country_id = country.id
+
+select city.cityname, country.cname from city left join country on city.country_id = country.id
+
+select * from city
